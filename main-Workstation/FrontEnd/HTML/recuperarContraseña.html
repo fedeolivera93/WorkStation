@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
     <title>WorkStation - Recuperar Contraseña</title>
     <style>
         body {
@@ -22,7 +24,7 @@
             box-sizing: border-box;
         }
         .recovery-button {
-            padding: 10px 20px;
+            padding: 7px 14px;
             background-color: #3498db;
             color: white;
             border: none;
@@ -33,6 +35,8 @@
             background-color: #2980b9;
         }
         .back-to-login {
+            padding-top: 10px;
+            padding-bottom: 5px;
             text-decoration: underline;
             color: blue;
             cursor: pointer;
@@ -44,14 +48,16 @@
         <h2>WorkStation - Recuperar Contraseña</h2>
         <input type="email" placeholder="Correo Electrónico" class="input-field" required><br>
         <input type="text" placeholder="Token" class="input-field" required><br>
-        <button class="recovery-button">Recuperar Contraseña</button><br>
+        <a href="cambioContraseña.html">
+        <button class="recovery-button">Recuperar Contraseña</button>
+        </a><br>
         <div class="back-to-login" onclick="backToLogin()">Volver a Inicio</div>
     </div>
 
     <script>
         function backToLogin() {
             // Puedes redirigir a la página de inicio de sesión
-            window.location.href = "Index.html";
+            window.location.href = "index.html";
         }
     </script>
 </body>

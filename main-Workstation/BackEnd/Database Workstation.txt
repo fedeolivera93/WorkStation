@@ -1,0 +1,23 @@
+create database workstation
+
+use workstation
+
+create table usuarios (
+id int  not null,
+nombre varchar (35) not null,
+apellido varchar (35) not null,
+dni varchar (8) null,
+telefono varchar (30) null,
+mail varchar (70) null,
+fecha_nacimiento date null,
+clave_acceso varchar (30) not null,
+token int null, 
+primary key (id),
+)
+
+insert into usuarios (id, nombre, apellido, dni, telefono, mail, fecha_nacimiento, clave_acceso, token) values (1, 'Federico', 'Olivera', '38955220', '1166563038', 'fedeolivera93@gmail.com', '1993-03-15', '1234aA:', '12345678');
+
+select * from usuarios
+
+insert into usuarios (id, nombre, apellido, dni, telefono, mail, fecha_nacimiento, clave_acceso, token) values (1, 'Federico', 'Olivera', '38955220', '1166563038', 'fedeolivera93@gmail.com', '1993-03-15', '1234aA:', '12345678');
+INSERT INTO USUARIOS(ID, NOMBRE, APELLIDO, DNI, TELEFONO, MAIL, clave_acceso,TOKEN) VALUES (2306,'JUAN', 'SALTO', 40732243, 2223429725, 'juannsalto@gmail.com', 'Louta1997!', null);

@@ -1,0 +1,14 @@
+FORO CONSULTAS:
+
+REGLAS
+
+-HACER LA CONSULTA Y SEPARAR UNA CONSULTA DE OTRA CON BARRAS... EJEMPLO:
+
+-------------------------------X---------------------------------
+TEMA: ETC
+
+¿Por qué no pushea bien mi repo?
+
+Deberias ver el arbol de la carpeta y a donde apunta tu repositorio *adjunto link de referencia tutorial*
+
+------------------------------X----------------------------------
