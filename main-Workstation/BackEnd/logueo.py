@@ -34,7 +34,7 @@ def claveAccesoParametro(password):
 
     # verifica que la contraseña tenga al menos un carácter especial
     caracteres_especiales = [",", ".", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "<", ">", "?", "/"]
-    if not re.search(r"[{}]".format("|".join(caracteres_especiales)), clave):
+    if not re.search(r"[{}]".format("|".join(caracteres_especiales)), password):
         return False
 
     return True
@@ -45,7 +45,8 @@ def ejecucion(mail, password):
       validacionMailSintaxis(mail, password)
       claveAccesoParametro(password,mail)
       if validacionMailSintaxis(mail, password) and claveAccesoParametro(mail, password) == True:
-        connectionSQL
+        if connectionSQL.verificarMailSQL(mail) and connectionSQL.verificarPasswordSQL(password) == True:
+         return True
       else:
           return False
        
