@@ -1,37 +1,35 @@
 import re
-import pyodbc
-
+import connectionSQL
  
      
 
-def validacionMailSintaxis(correo,clave):
+def validacionMailSintaxis(mail):
 
-    
     # verifica que el correo tenga el formato correcto
-    if not re.match(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$", correo):
+    if not re.match(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$", mail):
         return False
 
     
     # verifica que el correo contenga una de las direcciones de correo electrónico permitidas
     dominios_permitidos = ["gmail.com", "yahoo.com", "outlook.com", "hotmail.com"]
     for dominio in dominios_permitidos:
-        if dominio in correo:
+        if dominio in mail:
             return True
     return False
 
 
 
-def claveAccesoParametro(correo, clave):
+def claveAccesoParametro(password):
     # verifica que la contraseña tenga al menos una letra mayúscula
-    if not re.search(r"[A-Z]", clave):
+    if not re.search(r"[A-Z]", password):
         return False
 
     # verifica que la contraseña tenga al menos una letra minúscula
-    if not re.search(r"[a-z]", clave):
+    if not re.search(r"[a-z]", password):
         return False
 
     # verifica que la contraseña tenga al menos un número
-    if not re.search(r"[0-9]", clave):
+    if not re.search(r"[0-9]", password):
         return False
 
     # verifica que la contraseña tenga al menos un carácter especial
@@ -42,57 +40,16 @@ def claveAccesoParametro(correo, clave):
     return True
 
 
-def comprobarSQL(correo, clave):
-
-
-  # Configura tus propios parámetros de conexión
-    server = 'DESKTOP-EU4H1J4' 
-    database = 'workstation' 
-    username = correo 
-    password = clave 
-
-    # Crea la cadena de conexión
-    conn_str = (
-        r'DRIVER={ODBC Driver 17 for SQL Server};'
-        r'SERVER=' + server + ';'
-        r'DATABASE=' + database + ';'
-        r'UID=' + username + ';'
-        r'PWD=' + password + ';'
-    )
-
-    # Establece la conexión
-    conn = pyodbc.connect(conn_str)
-    print(conn)
-    if conn != False:
-       print("conectado")
-
-    # Crea un cursor
-    cursor = conn.cursor()
-
-    return cursor
-
-
-
-
-def ejecucion():
- intentos = 0
- while intentos<3:
-     
-      correo = input("Mail")
-      clave = input("Contraseña")
-      validacionMailSintaxis(correo, clave)
-      claveAccesoParametro(clave,correo)
-      if validacionMailSintaxis(correo, clave) and claveAccesoParametro(correo, clave):
-       comprobarSQL(correo, clave)
+def ejecucion(mail, password):
+ 
+      validacionMailSintaxis(mail, password)
+      claveAccesoParametro(password,mail)
+      if validacionMailSintaxis(mail, password) and claveAccesoParametro(mail, password) == True:
+        connectionSQL
       else:
-       intentos += 1
-       if intentos<3:
-        repetir = input("¿Reintentar? (S/N): ")
-        if repetir.lower() != "s":
-         break
-    
- if intentos == 3:
-   print("imposible, intentos agotados. Afuera maestro")   
+          return False
+       
+       
 
 ejecucion()
 
