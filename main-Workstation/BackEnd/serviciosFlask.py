@@ -26,3 +26,7 @@ def login(mail, password):
         mensaje = 'error'
 
     return jsonify({'mensaje': mensaje})
+
+@app.route('/forgot_password')
+def forgot_password():
+    return render_template('recuperarContraseña.html')
