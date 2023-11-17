@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, render_template, url_for
 
 
-app = Flask(__name__, template_folder='C:\\Desarrollo\\Workstation\\main-Workstation\\FrontEnd\\HTML\\templateFiles', static_folder='C:\\Desarrollo\\Workstation\\main-Workstation\\FrontEnd\\HTML\\staticFiles' )
+app = Flask(__name__, template_folder='C:\\Desarrollo\\Mis Proyectos\\WorkstationFedeOlivera\\main-Workstation\\FrontEnd\\HTML\\templateFiles', static_folder='C:\\Desarrollo\\Mis Proyectos\\WorkstationFedeOlivera\\main-Workstation\\FrontEnd\\HTML\\staticFiles' )
 
 
 
@@ -9,8 +9,18 @@ app = Flask(__name__, template_folder='C:\\Desarrollo\\Workstation\\main-Worksta
 def home():
     return render_template('index.html')
 
+@app.route('/forgot_password')
+def forgot_password():
+     return render_template('recuperarContraseña.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+
+
 
 import logueo
 import requests
@@ -27,6 +37,8 @@ def login(mail, password):
 
     return jsonify({'mensaje': mensaje})
 
-@app.route('/forgot_password')
-def forgot_password():
-    return render_template('recuperarContraseña.html')
+if __name__ == '__main__':
+    app.run(debug=True)
+
+
+

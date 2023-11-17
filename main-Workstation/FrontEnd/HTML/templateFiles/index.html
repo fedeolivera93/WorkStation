@@ -47,15 +47,15 @@
         <input type="email" placeholder="Correo Electrónico" class="input-field" required id="email"><br>
         <input type="password" placeholder="Contraseña" class="input-field" required id="password"><br>
         <button class="login-button"  onclick="acceso()" id="iniciarSesion">Iniciar Sesión</button><br>
-        <div class="forgot-password" onclick="forgotPassword()">¿Olvidaste tu contraseña?</div>
+        <div class="forgot-password" onclick="contraseniaRecuperar()">¿Olvidaste tu contraseña?</div>
     </div>
 
     <script>
-        function forgotPassword() {
-            // Redirige al usuario a la página recuperaContraseña.html
-            window.location.href = "recuperarContraseña.html";
-        }
-      
+       function contraseniaRecuperar(){
+        window.location.href = '/forgot_password';
+       }
+
+
         function acceso() {
             const loginButton = document.getElementById('iniciarSesion');
             loginButton.addEventListener('click', () => {
