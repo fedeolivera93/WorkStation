@@ -1,7 +1,9 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, url_for
 
 
-app = Flask(__name__, template_folder='C:\\Desarrollo\\Workstation\\main-Workstation\\FrontEnd\\HTML')
+app = Flask(__name__, template_folder='C:\\Desarrollo\\Workstation\\main-Workstation\\FrontEnd\\HTML\\templateFiles', static_folder='C:\\Desarrollo\\Workstation\\main-Workstation\\FrontEnd\\HTML\\staticFiles' )
+
+
 
 @app.route('/inicio')
 def home():
