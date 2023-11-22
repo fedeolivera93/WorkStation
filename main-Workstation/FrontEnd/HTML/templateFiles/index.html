@@ -51,10 +51,13 @@
     </div>
 
     <script>
-       function contraseniaRecuperar(){
+
+      document.addEventListener('DOMContentLoaded', function() {
+
+
+        function contraseniaRecuperar(){
         window.location.href = '/forgot_password';
        }
-
 
         function acceso() {
             const loginButton = document.getElementById('iniciarSesion');
@@ -81,8 +84,14 @@
                 console.error('Error:', error);
             });
         });
-
+    
         }
+
+              } );
+     
+
+
+      
     </script>
 </body>
 </html>
