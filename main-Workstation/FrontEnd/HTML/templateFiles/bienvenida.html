@@ -14,7 +14,7 @@
     <nav>
         <ul>
             <li><a onclick="bienvenida()">Inicio</a></li>
-            <li><a href="compras.html">Compras</a></li>
+            <li><a onclick="compras()">Compras</a></li>
             <li><a href="ventas.html">Ventas</a></li>
             <li><a href="clientes.html">Clientes</a></li>
             <li><a href="proveedores.html">Proveedores</a></li>
@@ -23,6 +23,17 @@
     </nav>
 
   <button id="night-mode" onclick="toggleNightMode()">🌙</button>
+
+
+    <script>
+     function compras(){
+      window.location.href = '/compras'
+      }
+
+    </script>
+
+
+
   <script>
     // Función para cambiar al modo nocturno
     function toggleNightMode() {
