@@ -13,8 +13,6 @@ def home():
 def forgot_password():
      return render_template('recuperarContraseña.html')
 
-
-
 @app.route('/login', methods=['POST'])
 def login(mail, password):
     mail = request.form['mail']
@@ -26,6 +24,10 @@ def login(mail, password):
         mensaje = 'error en verificacion usuario/contraseña'
 
     return jsonify({'mensaje': mensaje})
+
+@app.route('/bienvenida')
+def forgot_password():
+     return render_template('bienvenida.html')
 
 
 if __name__ == '__main__':
