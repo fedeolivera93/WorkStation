@@ -52,17 +52,19 @@
 
     <script>
 
-     function contraseniaRecuperar(){
-        window.location.href = '/forgot_password';
-       }
+          function contraseniaRecuperar(){
+          window.location.href = '/forgot_password';
+         }
 
-        
-
-        function acceso() {
+         function acceso() {
             const loginButton = document.getElementById('iniciarSesion');
             loginButton.addEventListener('click', () => {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
+
+            if (password == null) or (mail == null) 
+                alert('Contraseña o email vacios, reintente.')
+                return false
 
             fetch('/login', {
                 method: 'POST',
@@ -73,6 +75,7 @@
             })
             .then(response => response.json())
             .then(data => {
+
                 if (data.mensaje === 'ok') {
                     window.location.href = '/bienvenida';
                 } else {
