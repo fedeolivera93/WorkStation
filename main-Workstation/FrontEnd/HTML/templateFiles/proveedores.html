@@ -7,19 +7,54 @@
 </head>
 <body>
 
+
   <h1>Bienvenido a Workstation</h1>
     <nav>
         <ul>
-            <li><a href="bienvenida.html">Inicio</a></li>
-            <li><a href="compras.html">Compras</a></li>
-            <li><a href="ventas.html">Ventas</a></li>
-            <li><a href="clientes.html">Clientes</a></li>
-            <li><a href="proveedores.html">Proveedores</a></li>
-            <li><a href="productos.html">Productos</a></li>
-        </ul>
+          <li><a onclick="bienvenida()">Inicio</a></li>
+          <li><a onclick="compras()">Compras</a></li>
+          <li><a onclick="ventas()">Ventas</a></li>
+          <li><a onclick="clientes()">Clientes</a></li>
+          <li><a onclick="proveedores()">Proveedores</a></li>
+          <li><a onclick="productos()">Productos</a></li>
+      </ul>
     </nav>
+    
 
   <button id="night-mode" onclick="toggleNightMode()">🌙</button>
+  
+  <script>
+
+    function bienvenida() {
+      windows.location.href = '/bienvenida';
+
+    }
+
+    function compras() {
+      window.location.href = '/compras';
+    }
+
+    function ventas() {
+
+      window.location.href = '/ventas';
+    }
+
+    function clientes (){
+
+      window.location.href = '/clientes'
+    }
+    function proveedores() {
+
+      window.location.href = '/proveedores';
+    }
+
+      function productos (){
+
+      window.location.href = '/productos'
+    }
+
+  </script>
+  
   <script>
     // Función para cambiar al modo nocturno
     function toggleNightMode() {

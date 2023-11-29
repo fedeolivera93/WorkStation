@@ -37,6 +37,22 @@ def login(mail, password):
 def compras():
      return render_template('compras.html')
 
+@app.route('/ventas')
+def ventas():
+     return render_template('ventas.html')
+
+@app.route('/proveedores')
+def proveedores():
+     return render_template('proveedores.html')
+
+@app.route('/productos')
+def productos():
+     return render_template('productos.html')
+
+@app.route('/clientes')
+def clientes():
+     return render_template('clientes.html')
+
 
 
 if __name__ == '__main__':
