@@ -2,7 +2,7 @@ from flask import Flask, jsonify, render_template, request
 from logueo import ejecucion
 
 
-app = Flask(__name__, template_folder='C:/Desarrollo/Workstation/main-Workstation/FrontEnd/HTML/templateFiles', static_folder='C:/Desarrollo/Workstation/main-Workstation/FrontEnd/HTML/staticFiles' )
+app = Flask(__name__, template_folder='C:\\Desarrollo\\Mis Proyectos\\WorkstationFedeOlivera\\main-Workstation\\FrontEnd\\HTML\\templateFiles', static_folder='C:\\Desarrollo\\Mis Proyectos\\WorkstationFedeOlivera\\main-Workstation\\FrontEnd\\HTML\\staticFiles' )
 
 
 @app.route('/bienvenida')
@@ -24,18 +24,18 @@ def compras():
 
 @app.route('/login', methods=['POST'])
 def login():
-    mail = request.form['mail']
-    password = request.form['password']
+   mail = request.form.get('email')
+   password = request.form.get('password')
 
-    if mail or password == None:
-        return ('error en verificacion usuario/contraseña')
+   if mail is None or password is None:
+       return jsonify({'mensaje': 'error en verificacion usuario/contraseña'})
 
-    if ejecucion(mail, password):
-        mensaje = 'ok'
-    else:
-        mensaje = 'error en verificacion usuario/contraseña'
+   if ejecucion(mail, password):
+     mensaje = 'ok'
+   else:
+      mensaje = 'error en verificacion usuario/contraseña'
 
-    return jsonify({'mensaje': mensaje})
+   return jsonify({'mensaje': mensaje})
 
 
 
