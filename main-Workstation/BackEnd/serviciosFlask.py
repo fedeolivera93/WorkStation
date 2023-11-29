@@ -23,7 +23,7 @@ def compras():
 
 
 @app.route('/login', methods=['POST'])
-def login(mail, password):
+def login():
     mail = request.form['mail']
     password = request.form['password']
 
