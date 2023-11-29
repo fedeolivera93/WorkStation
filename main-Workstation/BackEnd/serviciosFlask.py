@@ -17,6 +17,10 @@ def home():
 def forgot_password():
      return render_template('recuperarContraseña.html')
 
+@app.route('/compras')
+def compras():
+     return render_template('compras.html')
+
 
 @app.route('/login', methods=['POST'])
 def login(mail, password):
@@ -33,9 +37,7 @@ def login(mail, password):
 
     return jsonify({'mensaje': mensaje})
 
-@app.route('/compras')
-def compras():
-     return render_template('compras.html')
+
 
 @app.route('/ventas')
 def ventas():
