@@ -62,9 +62,7 @@
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
-            if (password == null) or (mail == null) 
-                alert('Contraseña o email vacios, reintente.')
-                return false
+
 
             fetch('/login', {
                 method: 'POST',

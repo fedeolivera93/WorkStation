@@ -13,7 +13,7 @@ def verificarMailSQL(mail, miCursor):
     return False
 
 def verificarPasswordSQL(password, miCursor):
-    miCursor.execute("SELECT * FROM clave") 
+    miCursor.execute("SELECT * FROM clave_acceso") 
     listaPassword = miCursor.fetchall()
     for listaPassword in password:
         if password in listaPassword: 
