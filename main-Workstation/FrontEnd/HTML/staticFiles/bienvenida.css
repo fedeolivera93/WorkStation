@@ -99,26 +99,7 @@ div.menu-icon span {
   line-height: 40px;
 }
 
-/* Estilos responsivos */
-@media (max-width: 400px) {
-  div.menu-icon {
-    display: block;
-  }
 
-  nav ul {
-    display: none;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    background-color: #f0f0f0;
-  }
-
-  nav ul li {
-    display: block;
-    text-align: center;
-  }
-}
 
 /* Estilos del modo nocturno */
 .night-mode {
@@ -127,7 +108,7 @@ div.menu-icon span {
 }
 
 .night-mode h1 {
-  color: #white;
+  color: white;
   text-shadow: 2px;
 }
 

@@ -45,7 +45,7 @@
     <div class="container">
         <h2>WorkStation - Iniciar Sesión</h2>
         <form>
-        <input type="email" placeholder="Correo Electrónico" class="input-field" required id="email"><br>
+        <input type="email" name="mail" placeholder="Correo Electrónico" class="input-field" required id="mail"><br>
         <input type="password" placeholder="Contraseña" class="input-field" required id="password"><br>
         <button class="login-button"  onclick="acceso()" id="iniciarSesion">Iniciar Sesión</button><br>
         <div class="forgot-password" onclick="contraseniaRecuperar()">¿Olvidaste tu contraseña?</div>
@@ -59,12 +59,12 @@
          }
 
          function acceso() {
-            const email = document.getElementById('email').value;
+            const mail = document.getElementById('mail').value;
             const password = document.getElementById('password').value;
 
                  fetch('/login', {
                  method: 'POST',
-                 body: JSON.stringify({ email, password }),
+                 body: JSON.stringify({ mail, password }),
                     headers: {
                      'Content-Type': 'application/json'
                          }
