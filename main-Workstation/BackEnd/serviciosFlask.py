@@ -24,11 +24,12 @@ def compras():
 
 @app.route('/login', methods=['POST'])
 def login():
-    mail = request.form['mail']
-    password = request.form['password']
 
-    if mail or password == None:
-        return ('error en verificacion usuario/contraseña')
+    data = request.get_json
+    mail = data.__get__('mail')
+    password = data.__get__('password')
+    if not mail or not password:
+        return jsonify({'mensaje': 'error en verificacion usuario/contraseña'})
 
     if ejecucion(mail, password):
         mensaje = 'ok'

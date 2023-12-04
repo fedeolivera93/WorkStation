@@ -60,6 +60,9 @@ nav ul li a {
 
 nav ul li a:hover {
   color: lightyellow;
+  cursor: pointer;
+  
+  ;
 }
 
 /* Estilos del botón de modo nocturno */
