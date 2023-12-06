@@ -5,16 +5,17 @@ import connectionSQL
 
 def validacionMailSintaxis(mail):
 
-    # verifica que el correo tenga el formato correcto
-    #if not re.match(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$", mail):
-    #    return False
+
+    return re.match(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', mail) is not None
 
     
     # verifica que el correo contenga una de las direcciones de correo electrónico permitidas
     dominios_permitidos = ["gmail.com", "yahoo.com", "outlook.com", "hotmail.com"]
-    for dominio in dominios_permitidos:
-        if dominio in mail:
+    dominio_actual = dominios_permitidos.pop(0)
+    while dominio_actual:
+        if dominio_actual in mail:
             return True
+        dominio_actual = dominios_permitidos.pop(0)
     return False
 
 
