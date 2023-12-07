@@ -46,10 +46,7 @@ def ejecucion(mail, password):
         mailStr = str(mail)
         passwordStr = str(password)
       
- 
-        validacionMailSintaxis(mailStr)
-        claveAccesoParametro(passwordStr)
-        if validacionMailSintaxis(mailStr, passwordStr) and claveAccesoParametro(mailStr, passwordStr) == True:
+        if validacionMailSintaxis(mailStr) and claveAccesoParametro(passwordStr) == True:
             connectionSQL.verificarMailSQL(mailStr) and connectionSQL.verificarPasswordSQL(passwordStr) == True
             return True
         else:
