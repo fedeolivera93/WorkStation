@@ -4,7 +4,7 @@ miCursor = miConexion.cursor()
 
 
 
-def verificarMailSQL(mailStr, miCursor):
+def verificarMailSQL(mailStr):
     miCursor.execute("SELECT * FROM mail") 
     listaEmail = miCursor.fetchall()
     for listaEmail in mailStr:
@@ -12,7 +12,7 @@ def verificarMailSQL(mailStr, miCursor):
             return True
     return False
 
-def verificarPasswordSQL(passwordStr, miCursor):
+def verificarPasswordSQL(passwordStr):
     miCursor.execute("SELECT * FROM clave_acceso") 
     listaPassword = miCursor.fetchall()
     for listaPassword in passwordStr:

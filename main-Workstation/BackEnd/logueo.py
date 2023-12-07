@@ -1,13 +1,15 @@
 import re
-import connectionSQL
+from connectionSQL import verificarMailSQL,verificarPasswordSQL
  
      
 
 def validacionMailSintaxis(mailStr):
 
     # verifica que el correo tenga el formato correcto
-    if not re.match(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$", mailStr):
+    if re.match(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$", mailStr):
         return False
+    else: 
+        return True
 
 
     
@@ -46,8 +48,8 @@ def ejecucion(mail, password):
         mailStr = str(mail)
         passwordStr = str(password)
       
-        if validacionMailSintaxis(mailStr) and claveAccesoParametro(passwordStr) == True:
-            connectionSQL.verificarMailSQL(mailStr) and connectionSQL.verificarPasswordSQL(passwordStr) == True
+        if  validacionMailSintaxis(mailStr) and claveAccesoParametro(passwordStr) ==  True:
+           if verificarMailSQL(mailStr) and verificarPasswordSQL(passwordStr) == True:
             return True
         else:
           return False
