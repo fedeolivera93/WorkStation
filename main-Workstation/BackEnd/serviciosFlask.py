@@ -2,7 +2,7 @@ from flask import Flask, jsonify, render_template, request
 from logueo import ejecucion
 
 
-app = Flask(__name__, template_folder='C:\\Desarrollo\\Mis Proyectos\\WorkstationFedeOlivera\\main-Workstation\\FrontEnd\\HTML\\templateFiles', static_folder='C:\\Desarrollo\\Mis Proyectos\\WorkstationFedeOlivera\\main-Workstation\\FrontEnd\\HTML\\staticFiles' )
+app = Flask(__name__, template_folder='C:/Desarrollo/Workstation/main-Workstation/FrontEnd/HTML/templateFiles', static_folder='C:/Desarrollo/Workstation/main-Workstation/FrontEnd/HTML/staticFiles' )
 
 
 @app.route('/bienvenida')

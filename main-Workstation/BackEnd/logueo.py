@@ -1,5 +1,5 @@
 import re
-from connectionSQL import verificarMailSQL,verificarPasswordSQL
+from connectionSQL import verificarCredenciales
  
      
 
@@ -32,8 +32,8 @@ def claveAccesoParametro(passwordStr):
         return False
 
     # verifica que la contraseña tenga al menos un número
-   # if not re.search(r"[0-9]", passwordStr):
-    #    return False
+    if re.search(r"[0-9]", passwordStr):
+        return False
 
     # verifica que la contraseña tenga al menos un carácter especial
     caracteres_especiales = [",", ".", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "<", ">", "?", "/"]
@@ -49,7 +49,7 @@ def ejecucion(mail, password):
         passwordStr = str(password)
       
         if  validacionMailSintaxis(mailStr) and claveAccesoParametro(passwordStr) ==  True:
-           if verificarMailSQL(mailStr) and verificarPasswordSQL(passwordStr) == True:
+           if verificarCredenciales (mailStr, passwordStr) == True:
             return True
         else:
           return False

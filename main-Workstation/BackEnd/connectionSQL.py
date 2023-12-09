@@ -1,26 +1,22 @@
-import sqlite3
-miConexion = sqlite3.connect('base.db')
-miCursor = miConexion.cursor()
+import sqlite3, bcrypt
+
+def verificarCredenciales (mailStr, passwordStr):
+    miConexion = sqlite3.connect('base.db')
+    miCursor = miConexion.cursor()
 
 
 
-def verificarMailSQL(mailStr):
-    miCursor.execute("SELECT * FROM mail") 
-    listaEmail = miCursor.fetchall()
-    for listaEmail in mailStr:
-        if mailStr in listaEmail: 
-            return True
-    return False
+    # Busca el usuario por correo electrónico
+    miCursor.execute("SELECT * FROM usuarios WHERE mail = ?", (mailStr,))
+    usuario = miCursor.fetchone()
 
-def verificarPasswordSQL(passwordStr):
-    miCursor.execute("SELECT * FROM clave_acceso") 
-    listaPassword = miCursor.fetchall()
-    for listaPassword in passwordStr:
-        if passwordStr in listaPassword: 
-            return True
-    return False
+    # Verifica si el usuario existe y la contraseña coincide
+    if usuario is not None and bcrypt.checkpw(passwordStr, usuario[2]):
+        return True
+    else:
+        return False
 
-miConexion.close()
+    miConexion.close()
 
 
 
