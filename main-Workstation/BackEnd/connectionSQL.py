@@ -1,23 +1,25 @@
 import sqlite3, bcrypt
 
-def verificarCredenciales (mailStr, passwordStr):
-    miConexion = sqlite3.connect('base.db')
-    miCursor = miConexion.cursor()
+def verificarCredenciales(mailStr, passwordStr):
 
 
+  connection = sqlite3.connect('base.db')
+  cursor = connection.cursor()
 
-    # Busca el usuario por correo electrónico
-    miCursor.execute("SELECT * FROM usuarios WHERE mail = ?", (mailStr,))
-    usuario = miCursor.fetchone()
+  # Use parameter binding for mailStr
+  mail_param = (mailStr,)
 
-    # Verifica si el usuario existe y la contraseña coincide
+  try:
+    # Use parameter placeholder in the query
+    cursor.execute("SELECT * FROM usuarios WHERE mail = ?", mail_param)
+    usuario = cursor.fetchone()
+
+    # Check for user existence and password validity
     if usuario is not None and bcrypt.checkpw(passwordStr, usuario[2]):
-        return True
+      return True
     else:
-        return False
-
-    miConexion.close()
-
-
-
-
+      return False
+  finally:
+    # Close connection and cursor
+    cursor.close()
+    connection.close()
