@@ -3,7 +3,7 @@ import sqlite3, bcrypt
 def verificarCredenciales(mailStr, passwordStr):
 
 
-  connection = sqlite3.connect('base.db')
+  connection = sqlite3.connect('C:/Desarrollo/Workstation/main-Workstation/FrontEnd/base.db')
   cursor = connection.cursor()
 
   # Use parameter binding for mailStr
