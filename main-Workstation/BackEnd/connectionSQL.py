@@ -2,24 +2,22 @@ import sqlite3, bcrypt
 
 def verificarCredenciales(mailStr, passwordStr):
 
+    connection = sqlite3.connect('C:/Desarrollo/Workstation/main-Workstation/BackEnd/base.db')
+    cursor = connection.cursor()
 
-  connection = sqlite3.connect('C:/Desarrollo/Workstation/main-Workstation/BackEnd/base.db')
-  cursor = connection.cursor()
+    mail_param = (mailStr,)
+    password_param = passwordStr.encode('utf-8')  # Codifica la contraseña antes del uso
 
-  # Use parameter binding for mailStr
-  mail_param = (mailStr,)
+    try:
+        cursor.execute("SELECT clave_acceso FROM usuarios WHERE mail = ?", mail_param)
+        hashed_password = cursor.fetchone()
 
-  try:
-    # Use parameter placeholder in the query
-    cursor.execute("SELECT * FROM usuarios WHERE mail = ?", mail_param)
-    usuario = cursor.fetchone()
+        if hashed_password and bcrypt.checkpw(password_param, hashed_password[0]):
+            return True
+        else:
+            return False
 
-    # Check for user existence and password validity
-    if usuario is not None and bcrypt.checkpw(passwordStr, usuario[2]):
-      return True
-    else:
-      return False
-  finally:
-    # Close connection and cursor
-    cursor.close()
-    connection.close()
+    finally:
+        cursor.close()
+        connection.close()
+
