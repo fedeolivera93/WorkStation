@@ -52,41 +52,41 @@
         </form>
     </div>
 
-    <script>
 
-          function contraseniaRecuperar(){
-          window.location.href = '/forgot_password';
-         }
-
-         function acceso() {
-            var mail = document.getElementById('mail').value;
-            var password = document.getElementById('password').value;
-
-                 fetch('/login', {
-                 method: 'POST',
-                 body: JSON.stringify({ mail, password }),
-                    headers: {
-                     'Content-Type': 'application/json'
-                         }
-                  })
-                    .then(response => response.json())
-                      .then(data => {
-
-                if (data.mensaje === 'ok') {
-                    window.location.href = '/bienvenida';
-                } else {
-                    alert('Usuario o contraseña incorrectos.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        };
-    
+ <script>
+    function contraseniaRecuperar() {
         
+        window.location.href = "/recuperarContrasenia";
+    }
 
-     
+    function bienvenida() {
+        window.location.href = "/bienvenida";
+    }
 
+    function acceso() {
+        const mail = document.getElementById('mail').value;
+        const password = document.getElementById('password').value;
+        const mensaje = ""
+
+        fetch('/login', {
+            method: 'POST',
+            body: JSON.stringify({ mail, password, mensaje }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.mensaje == "OK") {
+                bienvenida();
+            } else {
+                alert('Usuario o contraseña incorrectos.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    };
 
       
     </script>

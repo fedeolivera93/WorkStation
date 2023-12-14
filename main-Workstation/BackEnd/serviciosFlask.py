@@ -2,7 +2,7 @@ from flask import Flask, jsonify, render_template, request
 from logueo import ejecucion
 
 
-app = Flask(__name__, template_folder='C:/Desarrollo/Workstation/main-Workstation/FrontEnd/HTML/templateFiles', static_folder='C:/Desarrollo/Workstation/main-Workstation/FrontEnd/HTML/staticFiles' )
+app = Flask(__name__, template_folder='C:\\Desarrollo\\Mis Proyectos\\WorkstationFedeOlivera\\main-Workstation\\FrontEnd\\HTML\\templateFiles', static_folder='C:\\Desarrollo\\Mis Proyectos\\WorkstationFedeOlivera\\main-Workstation\\FrontEnd\\HTML\\staticFiles' )
 
 
 @app.route('/bienvenida')
@@ -24,19 +24,22 @@ def compras():
 
 @app.route('/login', methods=['POST'])
 def login():
+    try:
+        data = request.get_json()
+        mail = data.get('mail')
+        password = data.get('password')
+        mensaje = data.get('mensaje')
+    
+        if ejecucion(mail, password) == True:
+          mensaje ="OK"
+        else:
+          mensaje = 'error en verificacion usuario/contraseña'
 
-    data = request.get_json
-    mail = data.__get__('mail')
-    password = data.__get__('password')
-    if not mail or not password:
-        return jsonify({'mensaje': 'error en verificacion usuario/contraseña'})
-
-    if ejecucion(mail, password):
-        mensaje = 'ok'
-    else:
-        mensaje = 'error en verificacion usuario/contraseña'
-
-    return jsonify({'mensaje': mensaje})
+        return jsonify({"mensaje": mensaje})
+    
+    except Exception as e:
+        print(f"Error: {e}")
+        return jsonify({"mensaje": "error"})
 
 
 

@@ -7,9 +7,9 @@ def validacionMailSintaxis(mailStr):
 
     # verifica que el correo tenga el formato correcto
     if re.match(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$", mailStr):
-        return False
-    else: 
         return True
+    else: 
+        return False
 
 
     
@@ -32,7 +32,7 @@ def claveAccesoParametro(passwordStr):
         return False
 
     # verifica que la contraseña tenga al menos un número
-    if re.search(r"[0-9]", passwordStr):
+    if not re.search(r"[0-9]", passwordStr):
         return False
 
     # verifica que la contraseña tenga al menos un carácter especial
@@ -49,7 +49,7 @@ def ejecucion(mail, password):
         passwordStr = str(password)
       
         if  validacionMailSintaxis(mailStr) and claveAccesoParametro(passwordStr) ==  True:
-           if verificarCredenciales (mailStr, passwordStr) == True:
+           if verificarCredenciales (mailStr, password) == True:
             return True
         else:
           return False
